@@ -35,18 +35,13 @@ namespace ProyectoFinal.UI.Registros
         }
         private void BtnBuscar(object sender, RoutedEventArgs e)
         {
-            if (TextClienteId.Text.Length == 0)
+            if (TextClienteId.Text.Length == 0 || Utilidades.ToInt(TextClienteId.Text) ==0)
             {
 
                 MessageBox.Show("ID vacio", "Fallo", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            else if (!UsuarioBLL.Existe(Convert.ToInt32(TextClienteId.Text)))
-            {
-                Limpiar();
-                MessageBox.Show("El registro no existe", "Fallo", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
+           
 
             var cliente = ClienteBLL.Buscar(Convert.ToInt32(TextClienteId.Text));
             if (cliente != null)

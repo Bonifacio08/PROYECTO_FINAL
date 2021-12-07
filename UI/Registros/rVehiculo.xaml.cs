@@ -99,18 +99,13 @@ namespace ProyectoFinal.UI.Registros
 
         private void BtnBuscar(object sender, RoutedEventArgs e)
         {
-            if (TextBoxVehiculoId.Text.Length == 0)
+            if (TextBoxVehiculoId.Text.Length == 0 || Utilidades.ToInt(TextBoxVehiculoId.Text)==0)
             {
 
                 MessageBox.Show("ID vacio", "Fallo", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            else if (!VehiculoBLL.Existe(Convert.ToInt32(TextBoxVehiculoId.Text)))
-            {
-                Limpiar();
-                MessageBox.Show("El registro no existe", "Fallo", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
+           
 
             var vehiculo = VehiculoBLL.Buscar(Convert.ToInt32(TextBoxVehiculoId.Text));
             if (vehiculo != null)

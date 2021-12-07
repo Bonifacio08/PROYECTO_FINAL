@@ -108,6 +108,11 @@ namespace ProyectoFinal.UI.Registros
         }
         private void BtnBuscar(object sender, RoutedEventArgs e)
         {
+            if(TextArticuloId.Text.Length ==0 || Utilidades.ToInt(TextArticuloId.Text) == 0)
+            {
+                MessageBox.Show("Venta no existe", "Fallo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
 
             var encontrado = ArticuloBLL.Buscar(articulo.ArticuloId);
 

@@ -74,18 +74,13 @@ namespace ProyectoFinal.UI.Registros
          
         private void BtnBuscar(object sender, RoutedEventArgs e)
         {
-            if (TextBoxEmpleadoId.Text.Length == 0)
+            if (TextBoxEmpleadoId.Text.Length == 0 || Utilidades.ToInt(TextBoxEmpleadoId.Text)==0)
             {
 
                 MessageBox.Show("ID vacio", "Fallo", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            else if (!EmpleadoBLL.Existe(Convert.ToInt32(TextBoxEmpleadoId.Text)))
-            {
-                Limpiar();
-                MessageBox.Show("El registro no existe", "Fallo", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
+          
 
             var empleado = EmpleadoBLL.Buscar(Convert.ToInt32(TextBoxEmpleadoId.Text));
             if (empleado != null)

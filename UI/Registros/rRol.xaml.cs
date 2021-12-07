@@ -30,18 +30,13 @@ namespace ProyectoFinal.UI.Registros
 
         private void BtnBuscar(object sender, RoutedEventArgs e)
         {
-            if (TextRolID.Text.Length == 0)
+            if (TextRolID.Text.Length == 0 || Utilidades.ToInt(TextRolID.Text)==0)
             {
 
                 MessageBox.Show("ID vacio", "Fallo", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            else if (!RolBLL.Existe(Convert.ToInt32(TextRolID.Text)))
-            {
-                Limpiar();
-                MessageBox.Show("El registro no existe", "Fallo", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
+           
 
             var Rol = RolBLL.Buscar(Convert.ToInt32(TextRolID.Text));
             if (Rol != null)

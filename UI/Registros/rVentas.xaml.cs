@@ -108,6 +108,11 @@ namespace ProyectoFinal.UI.Registros
         }
         private void BtnBuscar(object sender, RoutedEventArgs e)
         {
+            if(TextVentaId.Text.Length == 0 || Utilidades.ToInt(TextVentaId.Text) == 0)
+            {
+                TextVentaId.Focus();
+                return;
+            }
 
             var encontrado = VentaBLL.Buscar(venta.VentaId);
 

@@ -64,7 +64,7 @@ namespace ProyectoFinal.UI.Registros
 
         private void BtnBuscar(object sender, RoutedEventArgs e)
         {
-            if (TextBoxCompraId.Text.Length == 0)
+            if (TextBoxCompraId.Text.Length == 0 || Utilidades.ToInt(TextBoxCompraId.Text)==0)
             {
 
                 MessageBox.Show("CompraId vacio", "Fallo", MessageBoxButton.OK, MessageBoxImage.Warning);
